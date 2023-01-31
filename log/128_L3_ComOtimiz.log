@@ -1,0 +1,58 @@
+--------------------------------------------------------------------------------
+CPU name:	Intel(R) Core(TM) i5-7500 CPU @ 3.40GHz
+CPU type:	Intel Coffeelake processor
+CPU clock:	3.41 GHz
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+STRUCT,Info,3
+CPU name:,Intel(R) Core(TM) i5-7500 CPU @ 3.40GHz,
+CPU type:,Intel Coffeelake processor,
+CPU clock:,3.408031377 GHz,
+TABLE,Region multMatVet_NAO_OTIM,Group 1 Raw,L3,5
+Region Info,Core 3,
+RDTSC Runtime [s],0.000017,
+call count,1,
+Event,Counter,Core 3
+INSTR_RETIRED_ANY,FIXC0,103547
+CPU_CLK_UNHALTED_CORE,FIXC1,73308
+CPU_CLK_UNHALTED_REF,FIXC2,68018
+L2_LINES_IN_ALL,PMC0,3132
+L2_TRANS_L2_WB,PMC1,524
+TABLE,Region multMatVet_NAO_OTIM,Group 1 Metric,L3,10
+Metric,Core 3,
+Runtime (RDTSC) [s],1.653713e-05,
+Runtime unhalted [s],2.151037e-05,
+Clock [MHz],3673.0860,
+CPI,0.7080,
+L3 load bandwidth [MBytes/s],12121.0875,
+L3 load data volume [GBytes],0.0002,
+L3 evict bandwidth [MBytes/s],2027.9214,
+L3 evict data volume [GBytes],3.353600e-05,
+L3 bandwidth [MBytes/s],14149.0089,
+L3 data volume [GBytes],0.0002,
+STRUCT,Info,3
+CPU name:,Intel(R) Core(TM) i5-7500 CPU @ 3.40GHz,
+CPU type:,Intel Coffeelake processor,
+CPU clock:,3.408031377 GHz,
+TABLE,Region multMatMat_NAO_OTIM,Group 1 Raw,L3,5
+Region Info,Core 3,
+RDTSC Runtime [s],0.002083,
+call count,1,
+Event,Counter,Core 3
+INSTR_RETIRED_ANY,FIXC0,14865180
+CPU_CLK_UNHALTED_CORE,FIXC1,7616640
+CPU_CLK_UNHALTED_REF,FIXC2,7038372
+L2_LINES_IN_ALL,PMC0,1031324
+L2_TRANS_L2_WB,PMC1,31528
+TABLE,Region multMatMat_NAO_OTIM,Group 1 Metric,L3,10
+Metric,Core 3,
+Runtime (RDTSC) [s],0.0021,
+Runtime unhalted [s],0.0022,
+Clock [MHz],3688.0330,
+CPI,0.5124,
+L3 load bandwidth [MBytes/s],31689.9448,
+L3 load data volume [GBytes],0.0660,
+L3 evict bandwidth [MBytes/s],968.7747,
+L3 evict data volume [GBytes],0.0020,
+L3 bandwidth [MBytes/s],32658.7195,
+L3 data volume [GBytes],0.0680,
