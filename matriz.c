@@ -104,7 +104,6 @@ void liberaVetor (void *vet)
  *  @return vetor de 'm' elementos
  *
  */
-
 void multMatVet (MatRow mat, Vetor v, int m, int n, Vetor res)
 {
     
@@ -116,6 +115,9 @@ void multMatVet (MatRow mat, Vetor v, int m, int n, Vetor res)
   }
 }
 
+void multMatVetOtim (MatRow mat, Vetor v, int m, int n, Vetor res){
+
+}
 
 /**
  *  Funcao multMatMat: Efetua multiplicacao de duas matrizes 'n x n' 
@@ -137,6 +139,9 @@ void multMatMat (MatRow A, MatRow B, int n, MatRow C)
 	C[i*n+j] += A[i*n+k] * B[k*n+j];
 }
 
+void multMatMatOtim (MatRow A, MatRow B, int n, MatRow C){
+
+}
 
 /**
  *  Funcao prnMat:  Imprime o conteudo de uma matriz em stdout

@@ -69,13 +69,20 @@ int main (int argc, char *argv[])
     printf ("=================================\n\n");
 #endif /* DEBUG */
   LIKWID_MARKER_START ("multMatVet_NAO_OTIM");
-
   multMatVet (mRow_1, vet, n, n, res);
   LIKWID_MARKER_STOP ("multMatVet_NAO_OTIM");
+
+  LIKWID_MARKER_START ("multMatVet_COM_OTIM");
+  multMatVetOtim(mRow_1, vet, n, n, res);
+  LIKWID_MARKER_STOP ("multMatVet_COM_OTIM");
 
   LIKWID_MARKER_START ("multMatMat_NAO_OTIM");
   multMatMat (mRow_1, mRow_2, n, resMat);
   LIKWID_MARKER_STOP ("multMatMat_NAO_OTIM");
+  
+  LIKWID_MARKER_START ("multMatMat_COM_OTIM");
+  multMatMat (mRow_1, mRow_2, n, resMat);
+  LIKWID_MARKER_STOP ("multMatMat_COM_OTIM");
     
 #ifdef DEBUG
     prnVetor (res, n);
