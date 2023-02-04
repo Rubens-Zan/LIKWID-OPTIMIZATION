@@ -7,92 +7,92 @@ CPU clock:	3.41 GHz
 STRUCT,Info,3
 CPU name:,Intel(R) Core(TM) i5-7500 CPU @ 3.40GHz,
 CPU type:,Intel Coffeelake processor,
-CPU clock:,3.408001618 GHz,
+CPU clock:,3.407994159 GHz,
 TABLE,Region multMatVet_NAO_OTIM,Group 1 Raw,L2CACHE,5
 Region Info,Core 3,
-RDTSC Runtime [s],0.000028,
+RDTSC Runtime [s],0.000015,
 call count,1,
 Event,Counter,Core 3
 INSTR_RETIRED_ANY,FIXC0,103547
-CPU_CLK_UNHALTED_CORE,FIXC1,72967
-CPU_CLK_UNHALTED_REF,FIXC2,67166
-L2_TRANS_ALL_REQUESTS,PMC0,10364
-L2_RQSTS_MISS,PMC1,3843
+CPU_CLK_UNHALTED_CORE,FIXC1,70040
+CPU_CLK_UNHALTED_REF,FIXC2,62906
+L2_TRANS_ALL_REQUESTS,PMC0,10344
+L2_RQSTS_MISS,PMC1,3744
 TABLE,Region multMatVet_NAO_OTIM,Group 1 Metric,L2CACHE,7
 Metric,Core 3,
-Runtime (RDTSC) [s],2.781860e-05,
-Runtime unhalted [s],2.141049e-05,
-Clock [MHz],3702.3443,
-CPI,0.7047,
-L2 request rate,0.1001,
-L2 miss rate,0.0371,
-L2 miss ratio,0.3708,
+Runtime (RDTSC) [s],1.518069e-05,
+Runtime unhalted [s],2.055168e-05,
+Clock [MHz],3794.4856,
+CPI,0.6764,
+L2 request rate,0.0999,
+L2 miss rate,0.0362,
+L2 miss ratio,0.3619,
 STRUCT,Info,3
 CPU name:,Intel(R) Core(TM) i5-7500 CPU @ 3.40GHz,
 CPU type:,Intel Coffeelake processor,
-CPU clock:,3.408001618 GHz,
+CPU clock:,3.407994159 GHz,
 TABLE,Region multMatVet_COM_OTIM,Group 1 Raw,L2CACHE,5
 Region Info,Core 3,
 RDTSC Runtime [s],0.000010,
 call count,1,
 Event,Counter,Core 3
 INSTR_RETIRED_ANY,FIXC0,86119
-CPU_CLK_UNHALTED_CORE,FIXC1,48964
-CPU_CLK_UNHALTED_REF,FIXC2,43878
-L2_TRANS_ALL_REQUESTS,PMC0,9681
-L2_RQSTS_MISS,PMC1,2722
+CPU_CLK_UNHALTED_CORE,FIXC1,48211
+CPU_CLK_UNHALTED_REF,FIXC2,43168
+L2_TRANS_ALL_REQUESTS,PMC0,9205
+L2_RQSTS_MISS,PMC1,2397
 TABLE,Region multMatVet_COM_OTIM,Group 1 Metric,L2CACHE,7
 Metric,Core 3,
-Runtime (RDTSC) [s],1.040373e-05,
-Runtime unhalted [s],1.436736e-05,
-Clock [MHz],3803.0309,
-CPI,0.5686,
-L2 request rate,0.1124,
-L2 miss rate,0.0316,
-L2 miss ratio,0.2812,
+Runtime (RDTSC) [s],1.037730e-05,
+Runtime unhalted [s],1.414644e-05,
+Clock [MHz],3806.1251,
+CPI,0.5598,
+L2 request rate,0.1069,
+L2 miss rate,0.0278,
+L2 miss ratio,0.2604,
 STRUCT,Info,3
 CPU name:,Intel(R) Core(TM) i5-7500 CPU @ 3.40GHz,
 CPU type:,Intel Coffeelake processor,
-CPU clock:,3.408001618 GHz,
+CPU clock:,3.407994159 GHz,
 TABLE,Region multMatMat_NAO_OTIM,Group 1 Raw,L2CACHE,5
 Region Info,Core 3,
-RDTSC Runtime [s],0.001895,
+RDTSC Runtime [s],0.001912,
 call count,1,
 Event,Counter,Core 3
 INSTR_RETIRED_ANY,FIXC0,14865180
-CPU_CLK_UNHALTED_CORE,FIXC1,7194194
-CPU_CLK_UNHALTED_REF,FIXC2,6467106
-L2_TRANS_ALL_REQUESTS,PMC0,2851908
-L2_RQSTS_MISS,PMC1,9670
+CPU_CLK_UNHALTED_CORE,FIXC1,7258161
+CPU_CLK_UNHALTED_REF,FIXC2,6524332
+L2_TRANS_ALL_REQUESTS,PMC0,3423606
+L2_RQSTS_MISS,PMC1,44483
 TABLE,Region multMatMat_NAO_OTIM,Group 1 Metric,L2CACHE,7
 Metric,Core 3,
 Runtime (RDTSC) [s],0.0019,
 Runtime unhalted [s],0.0021,
-Clock [MHz],3791.1586,
-CPI,0.4840,
-L2 request rate,0.1919,
-L2 miss rate,0.0007,
-L2 miss ratio,0.0034,
+Clock [MHz],3791.3108,
+CPI,0.4883,
+L2 request rate,0.2303,
+L2 miss rate,0.0030,
+L2 miss ratio,0.0130,
 STRUCT,Info,3
 CPU name:,Intel(R) Core(TM) i5-7500 CPU @ 3.40GHz,
 CPU type:,Intel Coffeelake processor,
-CPU clock:,3.408001618 GHz,
+CPU clock:,3.407994159 GHz,
 TABLE,Region multMatMat_COM_OTIM,Group 1 Raw,L2CACHE,5
 Region Info,Core 3,
-RDTSC Runtime [s],0.001958,
+RDTSC Runtime [s],0.001959,
 call count,1,
 Event,Counter,Core 3
 INSTR_RETIRED_ANY,FIXC0,14865190
-CPU_CLK_UNHALTED_CORE,FIXC1,7205733
-CPU_CLK_UNHALTED_REF,FIXC2,6481306
-L2_TRANS_ALL_REQUESTS,PMC0,3315926
-L2_RQSTS_MISS,PMC1,10438
+CPU_CLK_UNHALTED_CORE,FIXC1,7258983
+CPU_CLK_UNHALTED_REF,FIXC2,6529302
+L2_TRANS_ALL_REQUESTS,PMC0,3667635
+L2_RQSTS_MISS,PMC1,46041
 TABLE,Region multMatMat_COM_OTIM,Group 1 Metric,L2CACHE,7
 Metric,Core 3,
 Runtime (RDTSC) [s],0.0020,
 Runtime unhalted [s],0.0021,
-Clock [MHz],3788.9200,
-CPI,0.4847,
-L2 request rate,0.2231,
-L2 miss rate,0.0007,
-L2 miss ratio,0.0031,
+Clock [MHz],3788.8539,
+CPI,0.4883,
+L2 request rate,0.2467,
+L2 miss rate,0.0031,
+L2 miss ratio,0.0126,

@@ -1,7 +1,7 @@
 #!/bin/bash
 
 METRICA="L3 L2CACHE FLOPS_DP"
-TAMANHOS="64 100 128"
+TAMANHOS="64 100 128 1024 2000 2048 3000 4000 5000"
 
 echo "performance" > /sys/devices/system/cpu/cpufreq/policy3/scaling_governor
 
