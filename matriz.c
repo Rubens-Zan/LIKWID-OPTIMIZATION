@@ -7,12 +7,12 @@
 /**
  * Função que gera valores para para ser usado em uma matriz
  * @param i,j coordenadas do elemento a ser calculado (0<=i,j<n)
-*  @return valor gerado para a posição i,j
-  */
-static inline real_t generateRandomA( unsigned int i, unsigned int j)
+ *  @return valor gerado para a posição i,j
+ */
+static inline real_t generateRandomA(unsigned int i, unsigned int j)
 {
   static real_t invRandMax = 1.0 / (real_t)RAND_MAX;
-  return ( (i==j) ? (real_t)(BASE<<1) : 1.0 )  * (real_t)random() * invRandMax;
+  return ((i == j) ? (real_t)(BASE << 1) : 1.0) * (real_t)random() * invRandMax;
 }
 
 /**
@@ -20,19 +20,17 @@ static inline real_t generateRandomA( unsigned int i, unsigned int j)
  * @return valor gerado
  *
  */
-static inline real_t generateRandomB( )
+static inline real_t generateRandomB()
 {
   static real_t invRandMax = 1.0 / (real_t)RAND_MAX;
-  return (real_t)(BASE<<2) * (real_t)random() * invRandMax;
+  return (real_t)(BASE << 2) * (real_t)random() * invRandMax;
 }
-
-
 
 /* ----------- FUNÇÕES ---------------- */
 
 /**
  *  Funcao geraMatRow: gera matriz como vetor único, 'row-oriented'
- * 
+ *
  *  @param m     número de linhas da matriz
  *  @param n     número de colunas da matriz
  *  @param zerar se 0, matriz  tem valores aleatórios, caso contrário,
@@ -41,26 +39,30 @@ static inline real_t generateRandomB( )
  *
  */
 
-MatRow geraMatRow (int m, int n, int zerar)
+MatRow geraMatRow(int m, int n, int zerar)
 {
-  MatRow matriz = (real_t *) malloc(m*n*sizeof(real_t));
+  MatRow matriz = (real_t *)malloc(m * n * sizeof(real_t));
 
-  if (matriz) {
-    for (int i=0; i < m; ++i) {
-      for (int j=0; j < n; ++j) {
-	if (zerar) matriz[i*n + j] = 0.0;
-        else       matriz[i*n + j] = generateRandomA(i, j);
+  if (matriz)
+  {
+    for (int i = 0; i < m; ++i)
+    {
+      for (int j = 0; j < n; ++j)
+      {
+        if (zerar)
+          matriz[i * n + j] = 0.0;
+        else
+          matriz[i * n + j] = generateRandomA(i, j);
       }
     }
   }
-  
+
   return (matriz);
 }
 
-
 /**
  *  Funcao geraVetor: gera vetor de tamanho 'n'
- * 
+ *
  *  @param n  número de elementos do vetor
  *  @param zerar se 0, vetor  tem valores aleatórios, caso contrário,
  *               vetor tem valores todos nulos
@@ -68,30 +70,32 @@ MatRow geraMatRow (int m, int n, int zerar)
  *
  */
 
-Vetor geraVetor (int n, int zerar)
+Vetor geraVetor(int n, int zerar)
 {
-  Vetor vetor = (real_t *) malloc(n*sizeof(real_t));
+  Vetor vetor = (real_t *)malloc(n * sizeof(real_t));
 
   if (vetor)
-    for (int i=0; i < n; ++i) {
-      if (zerar) vetor[i] = 0.0;
-      else       vetor[i] = generateRandomB();
+    for (int i = 0; i < n; ++i)
+    {
+      if (zerar)
+        vetor[i] = 0.0;
+      else
+        vetor[i] = generateRandomB();
     }
-  
+
   return (vetor);
 }
 
 /**
  *  \brief: libera vetor
- * 
+ *
  *  @param  ponteiro para vetor
  *
  */
-void liberaVetor (void *vet)
+void liberaVetor(void *vet)
 {
-	free(vet);
+  free(vet);
 }
-
 
 /**
  *  Funcao multMatVet:  Efetua multiplicacao entre matriz 'mxn' por vetor
@@ -104,23 +108,37 @@ void liberaVetor (void *vet)
  *  @return vetor de 'm' elementos
  *
  */
-void multMatVet (MatRow mat, Vetor v, int m, int n, Vetor res)
+void multMatVet(MatRow mat, Vetor v, int m, int n, Vetor res)
 {
-    
+
   /* Efetua a multiplicação */
-  if (res) {
-    for (int i=0; i < m; ++i)
-      for (int j=0; j < n; ++j)
-        res[i] += mat[n*i + j] * v[j];
+  if (res)
+  {
+    for (int i = 0; i < m; ++i)
+      for (int j = 0; j < n; ++j)
+        res[i] += mat[n * i + j] * v[j];
   }
 }
 
-void multMatVetOtim (MatRow mat, Vetor v, int m, int n, Vetor res){
-
+void multMatVetOtim(MatRow mat, Vetor v, int m, int n, Vetor res)
+{
+  /* Efetua a multiplicação */
+  // if (res) {
+    for (int i=0; i < m-(m % STRIDE); i+= STRIDE)
+      for (int j=0; j < n; ++j){
+        res[i] += mat[m*i + j] * v[j];
+        res[i+1] += mat[m*(i+1) + j] * v[j];
+        res[i+2] += mat[m*(i+2) + j] * v[j];
+        res[i+3] += mat[m*(i+3) + j] * v[j];
+      }
+    for(int i = m-(m % STRIDE); i < m; ++i)
+      for (int j = 0; j < n; ++j)
+        res[i] += mat[m*i + j] * v[j];
+  // }
 }
 
 /**
- *  Funcao multMatMat: Efetua multiplicacao de duas matrizes 'n x n' 
+ *  Funcao multMatMat: Efetua multiplicacao de duas matrizes 'n x n'
  *  @param A matriz 'n x n'
  *  @param B matriz 'n x n'
  *  @param n ordem da matriz quadrada
@@ -129,18 +147,50 @@ void multMatVetOtim (MatRow mat, Vetor v, int m, int n, Vetor res){
  *
  */
 
-void multMatMat (MatRow A, MatRow B, int n, MatRow C)
+void multMatMat(MatRow A, MatRow B, int n, MatRow C)
 {
 
   /* Efetua a multiplicação */
-  for (int i=0; i < n; ++i)
-    for (int j=0; j < n; ++j)
-      for (int k=0; k < n; ++k)
-	C[i*n+j] += A[i*n+k] * B[k*n+j];
+  for (int i = 0; i < n; ++i)
+    for (int j = 0; j < n; ++j)
+      for (int k = 0; k < n; ++k)
+        C[i * n + j] += A[i * n + k] * B[k * n + j];
 }
 
-void multMatMatOtim (MatRow A, MatRow B, int n, MatRow C){
+void multMatMatOtim(MatRow A, MatRow B, int n, MatRow C)
+{
+  unsigned int istart, iend;
+  unsigned int jstart, jend;
+  unsigned int kstart, kend;
 
+  for (int ii = 0; ii < n / BLOCK; ++ii)
+  {
+    istart = ii * BLOCK;
+    iend = istart + BLOCK;
+    for (int jj = 0; jj < n / BLOCK; ++jj)
+    {
+      jstart = jj * BLOCK;
+      jend = jstart + BLOCK;
+      for (int kk = 0; kk < n / BLOCK; ++kk)
+      {
+        kstart = kk * BLOCK;
+        kend = kstart + BLOCK;
+        for (int i = istart; i < iend; ++i)
+        {
+          for (int j = jstart; j < jend; j += STRIDE)
+          {
+            for (int k = kstart; k < kend; ++k)
+            {
+              C[i * n + j] += A[i * n + k] * B[k * n + j];
+              C[i * n + (j + 1)] += A[i * n + k] * B[k * n + (j + 1)];
+              C[i * n + (j + 2)] += A[i * n + k] * B[k * n + (j + 2)];
+              C[i * n + (j + 3)] += A[i * n + k] * B[k * n + (j + 3)];
+            }
+          }
+        }
+      }
+    }
+  }
 }
 
 /**
@@ -151,11 +201,12 @@ void multMatMatOtim (MatRow A, MatRow B, int n, MatRow C){
  *
  */
 
-void prnMat (MatRow mat, int m, int n)
+void prnMat(MatRow mat, int m, int n)
 {
-  for (int i=0; i < m; ++i) {
-    for (int j=0; j < n; ++j)
-      printf(DBL_FIELD, mat[n*i + j]);
+  for (int i = 0; i < m; ++i)
+  {
+    for (int j = 0; j < n; ++j)
+      printf(DBL_FIELD, mat[n * i + j]);
     printf("\n");
   }
   printf(SEP_RES);
@@ -168,10 +219,9 @@ void prnMat (MatRow mat, int m, int n)
  *
  */
 
-void prnVetor (Vetor vet, int n)
+void prnVetor(Vetor vet, int n)
 {
-  for (int i=0; i < n; ++i)
+  for (int i = 0; i < n; ++i)
     printf(DBL_FIELD, vet[i]);
   printf(SEP_RES);
 }
-

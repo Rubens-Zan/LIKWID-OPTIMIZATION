@@ -2,6 +2,8 @@
 
 #define DBL_FIELD "%12.7lg"
 #define SEP_RES "\n\n\n"
+#define STRIDE 4
+#define BLOCK 4
 
 #define DEF_SIZE 128
 #define BASE 32

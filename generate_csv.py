@@ -1,8 +1,10 @@
 def grep(file_path, substring):
     with open(file_path, 'r') as file:
+        i = 0
         for line in file:
             if substring in line:
-                yield line
+                i+=1
+                yield line,i
 
 TAMANHOS=['64','100','128']
 HEADER = ['MatXMat','MatxMatOtim','MatxVet','MatxVetOtim']
