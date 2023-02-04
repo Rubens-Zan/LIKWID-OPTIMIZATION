@@ -1,3 +1,4 @@
+Tamanho , MatXMat(FLOPS_DP) , MatXMat(FLOPS_AVX) , MatxMatOtim(FLOPS_DP) , MatxMatOtim(FLOPS_AVX) , MatxVet(FLOPS_DP) , MatxVet(FLOPS_AVX) , MatxVetOtim(FLOPS_DP) , MatxVetOtim(FLOPS_AVX) 
 64 , 2166.8941 , 0 , 3147.0495 , 0 , 2144.3795 , 0 , 2192.1677 , 0 
 100 , 2119.1284 , 0 , 3152.0248 , 0 , 2076.5606 , 0 , 2206.5883 , 0 
 128 , 2116.0763 , 0 , 3148.4703 , 0 , 2198.3941 , 0 , 2146.2262 , 0 

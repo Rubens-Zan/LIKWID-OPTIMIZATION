@@ -123,7 +123,7 @@ void multMatVet(MatRow mat, Vetor v, int m, int n, Vetor res)
 void multMatVetOtim(MatRow mat, Vetor v, int m, int n, Vetor res)
 {
   /* Efetua a multiplicação */
-  // if (res) {
+  if (res) {
     for (int i=0; i < m-(m % STRIDE); i+= STRIDE)
       for (int j=0; j < n; ++j){
         res[i] += mat[m*i + j] * v[j];
@@ -134,7 +134,7 @@ void multMatVetOtim(MatRow mat, Vetor v, int m, int n, Vetor res)
     for(int i = m-(m % STRIDE); i < m; ++i)
       for (int j = 0; j < n; ++j)
         res[i] += mat[m*i + j] * v[j];
-  // }
+  }
 }
 
 /**
