@@ -4,33 +4,30 @@ def grep(file_path, substring):
             if substring in line:
                 yield line
 
+TAMANHOS=['64','100','128']
+HEADER = ['MatXMat','MatxMatOtim','MatxVet','MatxVetOtim']
+TYPESDICTIONARY = {
+    'L3': 'L3 bandwidth [MBytes/s]', 
+    'L2CACHE': 'L2 miss ratio',
+    'FLOPS_DP' : 'DP MFLOP/s' 
+}
 
-# print('Tamanho', end=" ")
-# collumnNames = ['Teste de tempo s otim','Teste de tempo c otim','Banda de Memoria s otim','Banda de Memoria c otim','Cache miss L2 s otim','Cache miss L2 c otim','Operações aritméticas s otim','Operações aritméticas c otim']
-TAMANHOS=[64,100,128]
-COLLUMNAMES = ['Tamanho', 'MatXMat','MatxMatOtim','MatxVet','MatxVetOtim']
+def generate_csv(file_path, type, typeMetric):
+    with open(file_path, 'w') as f:
+                print('Tamanho', end=" ",file=f)
+                for col in HEADER:
+                    print(",",col, end=" ",file=f)
+                print(file=f)
+                for tam in TAMANHOS:
+                    print(tam, end=" ",file=f)
+                    for line in grep('log/'+type+'_'+tam+'.log', typeMetric):
+                        formattedLine =line.replace(',', ' ') 
+                        words = formattedLine.split()
+                        print(",",words[-1], end=" ", file=f)
+                    print(file=f)
 
-for col in COLLUMNAMES:
-    print(",",col, end=" ")
-print()
-
-for line in grep('log/L3_100_SemOtimiz.log', 'L3 bandwidth [MBytes/s]'):
-    formattedLine =line.replace(',', ' ') 
-    words = formattedLine.split()
-    print(words[-1], end=", ")
-
-for line in grep('log/100_L2CACHE_ComOtimiz.log', 'L2 miss ratio'):
-    formattedLine =line.replace(',', ' ') 
-    words = formattedLine.split()
-    print(words[-1],end=", ")
-
-# for line in grep('log/FLOPS_DP_100_SemOtimiz.log', 'DP MFLOP/s'):
-#     formattedLine =line.replace(',', ' ') 
-#     words = formattedLine.split()
-#     print(words[-1],end=", ")
-# print()
-
-
+for type in TYPESDICTIONARY.keys():
+    generate_csv('log'+type+'.csv', type, TYPESDICTIONARY[type])
 # Banda de Memória: MEM ou L3
 # Memory bandwidth [MBytes/s] 
 
