@@ -1,12 +1,15 @@
 #!/bin/bash
 #TAMANHOS="3000"
-TAMANHOS="64 100 128 1024 2000 3000 4000 5000"
+TAMANHOS="64 100 128 1000 1024 2000 2048 3000 4096 5000"
 
 TESTES="L3 L2CACHE FLOPS_DP"
 TAM2="1 2 3 4"
 CORE_ID=3
 
 rm RUNTIME_*.txt &>/dev/null
+
+echo "performance" > /sys/devices/system/cpu/cpufreq/policy3/scaling_governor
+
 for teste in $TESTES; do
     rm "$teste"_*.txt &>/dev/null
    
@@ -45,3 +48,23 @@ for teste in $TESTES; do
             done
             rm "$teste"_"$tam"_dp.txt "$teste"_"$tam"_avx.txt
         fi
+        i=$((0))
+        while read line; do
+            if (( $i % 4 == 0 )); then
+                echo -n "$tam | $line" >> "$teste"_multMatRowVet.txt                
+            elif (( $i % 4 == 1 )); then
+                echo " | $line" >> "$teste"_multMatRowVet.txt
+            elif (( $i % 4 == 2 )); then
+                echo -n "$tam | $line" >> "$teste"_multMatMatRow.txt
+            elif (( $i % 4 == 3 )); then
+                echo " | $line" >> "$teste"_multMatMatRow.txt
+            fi
+            i=$((i+1))
+        done < "$teste"_"$tam".txt
+        
+        rm "$teste"_"$tam".txt
+        rm tmp.txt
+    done
+done
+
+echo "powersave" > /sys/devices/system/cpu/cpufreq/policy3/scaling_governor 
